@@ -14,47 +14,31 @@ class MyApp extends StatelessWidget {
 }
 
 class homePage extends StatelessWidget {
-  Stream<int> HitungStream() async* {
-    for (int i = 0; i < 10; i++) {
-      await Future.delayed(Duration(milliseconds: 2000));
-      yield i;
-      print(i);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('BloC - Stream')),
+        title: Text('BloC - Cubit'),
         backgroundColor: Colors.amberAccent,
       ),
-      backgroundColor: Colors.black,
-      body: StreamBuilder(
-        stream: HitungStream(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: Text(
-                'Loading',
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.white,
+      body: Center(
+        child: Column(
+          children: [
+            Text('0'),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.minimize),
                 ),
-              ),
-            );
-          } else {
-            return Center(
-              child: Text(
-                "${snapshot.data}",
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.white,
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.maximize),
                 ),
-              ),
-            );
-          }
-        },
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
